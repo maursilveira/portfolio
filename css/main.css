@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+.hidden {
+  display: none;
+}
+
+.clearfix:after {
+  content: " "; /*Insert a blank space*/
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
+}
