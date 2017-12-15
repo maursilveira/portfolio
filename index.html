@@ -3,13 +3,139 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <link rel="stylesheet" type="text/css" href="css/reset.css" media="screen">
+  <link rel="stylesheet" href='http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'>
   <link rel="stylesheet" type="text/css" href="css/main.css" media="screen">
-  <title>Template</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="mask-icon" href="images/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="theme-color" content="#ffffff">
+  <title>maursilveira | Mauricio Silveira</title>
 </head>
 <body>
-  <h1 class="hidden">Template</h1>
+  <h1 class="hidden">Mauricio Silveira's Web Portfolio</h1>
 
-  <script src="js/main.js"></script>
+  <!-- main content begins -->
+  <div id="container">
+    <!-- header begins -->
+    <header>
+      <img id="main-logo" src="images/logo.svg" alt="Main Logo">
+      <i id="hamburger-menu" class="ion-navicon"></i>
+      <!-- main nav begins -->
+      <nav id="main-nav">
+        <h2 class="hidden">Main Navigation</h2>
+        <ul>
+          <li><a href="#">Work</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+      <!-- main nav ends -->
+    </header>
+    <!-- header ends -->
+
+    <main>
+      <!-- banner begins -->
+      <div id="main-banner">
+        <img src="images/monument.jpg" alt="Woman monument">
+        <p id="text-click">Mauricio Silveira</p>
+      </div>
+      <!-- banner ends -->
+
+      <!-- white triangle over content -->
+      <div id="top-triangle"></div>
+
+      <!-- work section begins -->
+      <section id="work" class="content-section">
+        <h2 class="section-title">Work</h2>
+        <div class="work-item">
+          <img src="images/lotr.jpg" alt="Lord of the Rings: The Fellowship of the Ring">
+        </div>
+        <div class="work-item">
+          <img src="images/octopx.jpg" alt="Octopx Digital">
+        </div>
+        <div class="work-item">
+          <img src="images/choose_london.jpg" alt="Choose London">
+        </div>
+        <div class="work-item">
+          <img src="images/odell.jpg" alt="Officialize: Odell Beckham Jr.">
+        </div>
+      </section>
+      <!-- work section ends -->
+
+      <!-- about section begins -->
+      <section id="about" class="content-section">
+        <h2 class="section-title">About Me</h2>
+        <div class="text-container">
+          <div id="yellow-rect"></div>
+          <p class="about-text">My name is Mauricio and I am a full-stack web developer currently living in London ON, Canada. I am a passionate about building things, learning new skills and exploring possibilities.</p>
+          <p class="about-text">I have a large experience working in DevOps teams in Technology and Media industry, comprehending whole development and deployment workflow of a solution.</p>
+          <p class="about-text">I am a self-taught and problem solver individual, always trying to make things works better. My motto is: anything is feasible.</p>
+        </div>
+        <hr class="line">
+        <a id="resume" href="#">Download resume</a>
+        <img id="about-photo" src="images/mauricio_photo.png" alt="Mauricio smiling">
+        <ul id="motto">
+          <li>Learn</li>
+          <li>Do</li>
+          <li>Launch</li>
+          <li>Repeat</li>
+        </ul>
+      </section>
+      <!-- about section ends -->
+
+      <!-- contact section begins -->
+      <section id="contact" class="content-section">
+        <h2 class="section-title">Contact</h2>
+        <form id="form" class="clearfix" action="#" method="post" autocomplete="off">
+          <div class="form-field">
+            <label class="form-label" for="name">Name</label>
+            <input class="form-info" type="text" name="name" required>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="email">E-mail</label>
+            <input class="form-info" type="email" name="email" required>
+          </div>
+          <div class="form-field message">
+            <label class="form-label" for="message">Message</label>
+            <textarea class="form-info" name="message" rows="8" cols="30" required></textarea>
+          </div>
+          <button id="form-submit" type="submit" formaction="#" >Submit</button>
+        </form>
+      </section>
+      <!-- contact section ends -->
+    </main>
+
+    <!-- footer begins -->
+    <footer>
+      <h2 class="hidden">Footer</h2>
+
+      <!-- social section begins -->
+      <section id="social">
+        <h3 class="hidden">Social links</h3>
+        <ul>
+          <li><a href="https://www.linkedin.com/in/maursilveira" target="_blank"><i class="ion-social-linkedin-outline"></i></a></li>
+          <li><a href="https://github.com/maursilveira" target="_blank"><i class="ion-social-github"></i></a></li>
+          <li><a href="https://twitter.com/maursilveira" target="_blank"><i class="ion-social-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/maursilveira" target="_blank"><i class="ion-social-facebook"></i></a></li>
+          <li><a href="https://www.instagram.com/maursilveira" target="_blank"><i class="ion-social-instagram-outline"></i></a></li>
+        </ul>
+      </section>
+      <!-- social sections ends -->
+
+      <!-- copyright -->
+      <section id="copyright">
+        <h3 class="hidden">Copyright</h3>
+        <p>built by maursilveira</p>
+        <p>licensed under <a href="https://github.com/maursilveira/portfolio/blob/master/LICENSE.md">MIT license</a></p>
+      </section>
+
+    </footer>
+    <!-- footer ends -->
+  </div>
+  <!-- main content ends -->
+
+  <script src="js/min/app.min.js"></script>
 </body>
 </html>

@@ -1,0 +1,10 @@
+@mixin grayscale($perc1) {
+  -webkit-filter: grayscale($perc1);
+  filter: grayscale($perc1);
+}
+
+@mixin translate($percX, $percY) {
+  -webkit-transform: translate($percX, $percY);
+  -ms-transform: translate($percX, $percY);
+  transform: translate($percX, $percY);
+}

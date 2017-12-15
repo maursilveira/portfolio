@@ -1,6 +1,9 @@
 /*SCSS document*/
 
 @import "reset";
+@import "fonts";
+@import "globals";
+@import "mixins";
 
 .hidden {
   display: none;
@@ -12,4 +15,322 @@
   display: block;
   height: 0;
   clear: both;
+}
+
+body {
+  font-family: $fontText;
+  font-weight: 300;
+  font-size: 1.1rem;
+  color: $textColor;
+  background-color: #ffffff;
+}
+
+#container {
+  width: 100%;
+  min-width: 320px;
+  max-width: 1920px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  min-width: inherit;
+  max-width: inherit;
+  // color: #ffffff;
+  color: $textColor;
+  z-index: 30;
+  background-color: rgba(255, 255, 255, 0.5);
+
+  #main-logo {
+    width: 3.5rem;
+    float: left;
+    margin: 0.5rem 0 0.5rem 0.5rem;
+    cursor: pointer;
+  }
+
+  #hamburger-menu {
+    font-size: 3.5rem;
+    float: right;
+    margin: 0.25rem 0.5rem 0 0;
+    cursor: pointer;
+  }
+
+  #main-nav {
+    display: none;
+    clear: both;
+
+    ul {
+      text-align: center;
+      li {
+        margin: 0.5rem 0;
+        a {
+          font-family: $fontTitle;
+          font-size: 1.5rem;
+          color: $textColor;
+          text-decoration: none;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+}
+
+#main-banner {
+  width: 100%;
+  max-width: inherit;
+  height: 100vh;
+  max-height: 1280px;
+  position: relative;
+  img {
+    position: fixed;
+    // top: 0;
+    width: 100%;
+    max-width: inherit;
+    height: 100%;
+    max-height: inherit;
+    -o-object-fit: cover;
+		object-fit: cover;
+    @include grayscale(60%);
+    opacity: 0.7;
+    z-index: -1;
+  }
+
+  p {
+    position: relative;
+    top: 50%;
+    @include translate(0, -50%);
+    color: $textColor;
+    font-size: 50px;
+    text-align: center;
+  }
+}
+
+#top-triangle {
+  width: 0;
+  margin: 0 auto;
+  border-left: 50vw solid transparent;
+  border-right: 50vw solid transparent;
+  border-bottom: 20vh solid #ffffff;
+}
+
+.content-section {
+  background-color: #ffffff;
+  padding: 0 1.1rem;
+  .section-title {
+    position: relative;
+    font-family: $fontTitle;
+    font-size: 2rem;
+    text-transform: uppercase;
+    text-align: right;
+    padding: 2rem 0;
+    &::before,
+    &::after {
+      content: "-";
+      margin: 0 0.5rem;
+    }
+  }
+}
+
+#work {
+  display: grid;
+  grid-template: 1fr;
+
+  .work-item {
+    img {
+      width: 100%;
+    }
+  }
+}
+
+#about {
+  // position: relative;
+  .text-container {
+    position: relative;
+
+    .about-text {
+      position: relative;
+      margin-bottom: 1rem;
+      z-index: 2;
+      &:first-of-type::first-letter {
+        float: left;
+        font-weight: normal;
+        font-size: 8rem;
+      }
+    }
+
+    #yellow-rect {
+      position: absolute;
+      width: 60vw;
+      height: 30vh;
+      top: 15%;
+      left: 0;
+      background-color: $yellow;
+      z-index: 0;
+      margin-left: -1.1rem;
+    }
+  }
+
+  .line {
+    float: right;
+    width: 25%;
+    max-width: 10rem;
+    border: none;
+    border-top: 4px solid $textColor;
+    margin-top: 1rem;
+  }
+
+  #resume {
+    clear: right;
+    display: block;
+    float: right;
+    color: $textColor;
+    text-decoration: none;
+    border-bottom: 1px solid $textColor;
+    padding-bottom: 0.2rem;
+    margin-top: 1.5rem;
+  }
+
+  #about-photo {
+    clear: right;
+    display: block;
+    width: 85%;
+    margin: 0 auto;
+    padding-top: 2.5rem;
+  }
+
+  #motto {
+    clear: right;
+    position: relative;
+    left: 10%;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 2.5rem;
+    li {
+      padding-bottom: 1rem;
+    }
+  }
+}
+
+#contact {
+  #form {
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 2rem;
+    .form-field {
+      width: 100%;
+      position: relative;
+      display: flex;
+      border: none;
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 2rem;
+      margin-top: -1rem;
+
+      .form-label {
+        font-family: $fontText;
+        font-weight: bold;
+        font-size: 3rem;
+        color: #dedede;
+        text-transform: uppercase;
+        margin-right: auto;
+        padding-top: 1.5rem;
+      }
+      .form-info {
+        position: absolute;
+        border: none;
+        border-bottom: 2px solid $textColor;
+        font-family: $fontTitle;
+        font-size: 1rem;
+        color: $textColor;
+        width: 75%;
+        align-self: center;
+        background-color: transparent;
+        outline: 0;
+        &:active {
+          border-color: $yellow;
+        }
+        // &::placeholder {
+        //   color: $textColor;
+        // }
+      }
+    }
+
+    .form-field.message {
+      padding-top: 1rem;
+      .form-label {
+        position: absolute;
+        left: 0;
+        padding-top: 3rem;
+      }
+      .form-info {
+        position: relative;
+        border-left: 2px solid $textColor;
+        width: 80%;
+      }
+    }
+
+    #form-submit {
+      float: right;
+      display: inline-block;
+      font-family: $fontText;
+      font-weight: 900;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      color: #ffffff;
+      background-color: $textColor;
+      border: 2px solid $textColor;
+      border-radius: 3px;
+      padding: 0.3rem 1.3rem;
+      cursor: pointer;
+      transition: all 0.4s ease-out;
+
+      &:hover {
+        color: $textColor;
+        background-color: $yellow;
+      }
+    }
+  }
+}
+
+footer {
+  background-color: $textColor;
+  color: #ffffff;
+  padding: 2rem 0;
+  text-align: center;
+
+  #social {
+    ul {
+      display: inline-flex;
+      li {
+        margin: 0 0.8rem;
+        a {
+          i {
+            font-size: 2rem;
+            color: #ffffff;
+            transition: color 0.4s ease-out;
+            &:hover {
+              color: $yellow;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #copyright {
+    margin-top: 2rem;
+    p {
+      font-family: $fontText;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+      a {
+        text-decoration: none;
+        color: #ffffff;
+      }
+    }
+  }
 }

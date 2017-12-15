@@ -1,0 +1,30 @@
+{
+  "name": "portfolio",
+  "version": "0.1.0",
+  "description": "Mauricio Silveira's Portfolio",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-uglify": "^3.2.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-postcss": "^0.9.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maursilveira/portfolio.git"
+  },
+  "author": "Mauricio M. Silveira",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/maursilveira/portfolio/issues"
+  },
+  "homepage": "https://github.com/maursilveira/portfolio#readme",
+  "dependencies": {
+    "autoprefixer": "^7.2.3"
+  }
+}
