@@ -135,12 +135,13 @@ header {
 }
 
 #work {
-  display: grid;
-  grid-template: 1fr;
-
-  .work-item {
-    img {
-      width: 100%;
+  #projects {
+    display: grid;
+    grid-template-columns: 100%;
+    .project-item {
+      img {
+        width: 100%;
+      }
     }
   }
 }
@@ -333,4 +334,114 @@ footer {
       }
     }
   }
+}
+
+// 640px
+@media screen and (min-width: 40rem) {
+  header {
+    #hamburger-menu {
+      display: none;
+    }
+
+    #main-nav {
+      display: block;
+      clear: none;
+      ul {
+        float: right;
+        li {
+          margin: 1.3rem 1rem 0 1rem;
+          display: inline-block;
+        }
+      }
+    }
+  }
+
+  .content-section {
+    padding: 0 2rem;
+    .section-title {
+      font-size: 2rem;
+      padding: 2rem 0;
+    }
+  }
+
+  #work {
+    #projects {
+      grid-template-columns: 1fr 1fr;
+      .project-item {
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  #about {
+    .text-container {
+      // position: relative24
+      .about-text {
+        // position: relative;
+        margin-bottom: 1rem;
+        // z-index: 2;
+        &:first-of-type::first-letter {
+          float: left;
+          font-weight: normal;
+          font-size: 24rem;
+          line-height: 16rem;
+        }
+      }
+
+      #yellow-rect {
+        position: absolute;
+        width: 60vw;
+        height: 30vh;
+        top: 15%;
+        left: 0;
+        background-color: $yellow;
+        z-index: 0;
+        margin-left: -1.1rem;
+      }
+    }
+
+    .line {
+      float: right;
+      width: 25%;
+      max-width: 10rem;
+      border: none;
+      border-top: 4px solid $textColor;
+      margin-top: 1rem;
+    }
+
+    #resume {
+      clear: right;
+      display: block;
+      float: right;
+      color: $textColor;
+      text-decoration: none;
+      border-bottom: 1px solid $textColor;
+      padding-bottom: 0.2rem;
+      margin-top: 1.5rem;
+    }
+
+    #about-photo {
+      clear: right;
+      display: block;
+      width: 85%;
+      margin: 0 auto;
+      padding-top: 2.5rem;
+    }
+
+    #motto {
+      clear: right;
+      position: relative;
+      left: 10%;
+      font-size: 2rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-top: 2.5rem;
+      li {
+        padding-bottom: 1rem;
+      }
+    }
+  }
+
 }
