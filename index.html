@@ -16,36 +16,42 @@
 <body>
   <h1 class="hidden">Mauricio Silveira's Web Portfolio</h1>
 
-  <!-- main content begins -->
+
   <div id="container">
-    <!-- header begins -->
-    <header>
-      <img id="main-logo" src="images/logo.svg" alt="Main Logo">
-      <i id="hamburger-menu" class="ion-navicon"></i>
-      <!-- main nav begins -->
-      <nav id="main-nav">
-        <h2 class="hidden">Main Navigation</h2>
-        <ul>
-          <li><a href="#">Work</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </nav>
-      <!-- main nav ends -->
-    </header>
-    <!-- header ends -->
+
+    <!-- banner begins -->
+    <div id="main-banner">
+      <img id="banner-image" src="images/monument.jpg" alt="Woman monument">
+      <div id="banner-over"></div>
+      <div id="banner-content">
+        <img id="banner-logo" src="images/logo_white.svg" alt="Banner Logo">
+        <p class="banner-title">Mauricio Silveira</p>
+        <p class="banner-text">web developer</p>
+      </div>
+      <!-- header begins -->
+      <header>
+        <img id="main-logo" src="images/logo_gray.svg" alt="Main Logo">
+        <img id="alt-logo" src="images/logo_white.svg" alt="Alternative Logo">
+        <i id="hamburger-menu" class="ion-navicon"></i>
+        <!-- main nav begins -->
+        <nav id="main-nav">
+          <h2 class="hidden">Main Navigation</h2>
+          <ul>
+            <li><a href="#">Work</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+        <!-- main nav ends -->
+      </header>
+      <!-- header ends -->
+    </div>
+    <!-- banner ends -->
+
+    <!-- white triangle over content -->
+    <div id="top-triangle"></div>
 
     <main>
-      <!-- banner begins -->
-      <div id="main-banner">
-        <img src="images/monument.jpg" alt="Woman monument">
-        <p id="text-click">Mauricio Silveira</p>
-      </div>
-      <!-- banner ends -->
-
-      <!-- white triangle over content -->
-      <div id="top-triangle"></div>
-
       <!-- work section begins -->
       <section id="work" class="content-section">
         <h2 class="section-title">Work</h2>
@@ -61,6 +67,12 @@
           </div>
           <div class="project-item">
             <img src="images/odell.jpg" alt="Officialize: Odell Beckham Jr.">
+          </div>
+          <div class="project-item">
+            <img src="images/great_speeches.jpg" alt="Great Speeches">
+          </div>
+          <div class="project-item">
+            <img src="images/southpaw.jpg" alt="The Southpaw Whisky">
           </div>
         </div>
       </section>
@@ -138,6 +150,7 @@
   </div>
   <!-- main content ends -->
 
-  <script src="js/min/app.min.js"></script>
+  <!-- <script src="js/min/app.min.js"></script> -->
+  <script src="js/main.js"></script>
 </body>
 </html>

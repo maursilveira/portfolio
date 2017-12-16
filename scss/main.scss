@@ -34,77 +34,155 @@ body {
   overflow: hidden;
 }
 
-header {
-  position: fixed;
-  width: 100%;
-  min-width: inherit;
-  max-width: inherit;
-  // color: #ffffff;
-  color: $textColor;
-  z-index: 30;
-  background-color: rgba(255, 255, 255, 0.5);
-
-  #main-logo {
-    width: 3.5rem;
-    float: left;
-    margin: 0.5rem 0 0.5rem 0.5rem;
-    cursor: pointer;
-  }
-
-  #hamburger-menu {
-    font-size: 3.5rem;
-    float: right;
-    margin: 0.25rem 0.5rem 0 0;
-    cursor: pointer;
-  }
-
-  #main-nav {
-    display: none;
-    clear: both;
-
-    ul {
-      text-align: center;
-      li {
-        margin: 0.5rem 0;
-        a {
-          font-family: $fontTitle;
-          font-size: 1.5rem;
-          color: $textColor;
-          text-decoration: none;
-          text-transform: uppercase;
-        }
-      }
-    }
-  }
-}
-
 #main-banner {
   width: 100%;
   max-width: inherit;
   height: 100vh;
   max-height: 1280px;
   position: relative;
-  img {
+
+  #banner-image {
     position: fixed;
-    // top: 0;
     width: 100%;
     max-width: inherit;
     height: 100%;
     max-height: inherit;
     -o-object-fit: cover;
 		object-fit: cover;
-    @include grayscale(60%);
-    opacity: 0.7;
+    @include grayscale(30%);
+    // opacity: 0.7;
+    z-index: -2;
+  }
+
+  #banner-over {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
     z-index: -1;
   }
 
-  p {
-    position: relative;
-    top: 50%;
-    @include translate(0, -50%);
+  #banner-content {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    #banner-logo {
+      width: 58vw;
+    }
+
+    .banner-title {
+      font-family: $fontTitle;
+      color: #ffffff;
+      font-weight: normal;
+      font-weight: bold;
+      font-size: 9vw;
+      text-transform: uppercase;
+      margin-top: 1rem;
+    }
+
+    .banner-text {
+      font-family: $fontText;
+      font-weight: 100;
+      color: #ffffff;
+      font-size: 7.2vw;
+      margin-top: 1rem;
+    }
+
+
+  }
+
+  header {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    min-width: inherit;
+    max-width: inherit;
+    z-index: 30;
+    background-color: transparent;
+    overflow: hidden;
+
+    #main-logo {
+      width: 3rem;
+      float: left;
+      margin: 1rem 0 1rem 1rem;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    #alt-logo {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 3rem;
+      margin: 1rem 0 1rem 1rem;
+      cursor: pointer;
+      opacity: 1;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    #hamburger-menu {
+      font-size: 3rem;
+      color: #ffffff;
+      float: right;
+      margin: 0.5rem 0.75rem 0 0;
+      cursor: pointer;
+      transition: color 0.3s ease-in-out;
+    }
+
+    #main-nav {
+      display: none;
+      clear: both;
+
+      ul {
+        text-align: center;
+        li {
+          margin: 0.5rem 0;
+          a {
+            font-family: $fontTitle;
+            font-weight: normal;
+            font-size: 1.2rem;
+            color: #ffffff;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color 0.3s ease-in-out;
+          }
+        }
+      }
+    }
+  }
+
+  header.ontop {
+    position: fixed;
+    top: 0;
+    bottom: auto;
     color: $textColor;
-    font-size: 50px;
-    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
+
+    #main-logo {
+      opacity: 1;
+    }
+
+    #alt-logo {
+      opacity: 0;
+    }
+
+    #hamburger-menu {
+      color: $textColor;
+    }
+
+    #main-nav {
+      ul {
+        li {
+          a {
+            color: $textColor;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -125,7 +203,7 @@ header {
     font-size: 2rem;
     text-transform: uppercase;
     text-align: right;
-    padding: 2rem 0;
+    padding: 3rem 0 2rem 0;
     &::before,
     &::after {
       content: "-";
@@ -138,7 +216,9 @@ header {
   #projects {
     display: grid;
     grid-template-columns: 100%;
+    line-height: 0;
     .project-item {
+      margin-bottom: 1rem;
       img {
         width: 100%;
       }
@@ -147,7 +227,6 @@ header {
 }
 
 #about {
-  // position: relative;
   .text-container {
     position: relative;
 
@@ -159,13 +238,14 @@ header {
         float: left;
         font-weight: normal;
         font-size: 8rem;
+        line-height: 6rem;
       }
     }
 
     #yellow-rect {
       position: absolute;
       width: 60vw;
-      height: 30vh;
+      height: 50%;
       top: 15%;
       left: 0;
       background-color: $yellow;
@@ -198,6 +278,7 @@ header {
     clear: right;
     display: block;
     width: 85%;
+    max-width: 640px;
     margin: 0 auto;
     padding-top: 2.5rem;
   }
@@ -247,6 +328,7 @@ header {
         font-family: $fontTitle;
         font-size: 1rem;
         color: $textColor;
+        text-align: center;
         width: 75%;
         align-self: center;
         background-color: transparent;
@@ -255,7 +337,7 @@ header {
           border-color: $yellow;
         }
         // &::placeholder {
-        //   color: $textColor;
+        //   text-align: center;
         // }
       }
     }
@@ -271,6 +353,7 @@ header {
         position: relative;
         border-left: 2px solid $textColor;
         width: 80%;
+        text-align: left;
       }
     }
 
@@ -338,19 +421,51 @@ footer {
 
 // 640px
 @media screen and (min-width: 40rem) {
-  header {
-    #hamburger-menu {
-      display: none;
+  #main-banner {
+    #banner-content {
+      // height: 80vh;
+      // display: flex;
+      // justify-content: center;
+      // align-items: center;
+      // flex-direction: column;
+
+      #banner-logo {
+        width: 44vw;
+      }
+
+      .banner-title {
+        // font-family: $fontTitle;
+        // color: #ffffff;
+        // font-weight: normal;
+        // font-weight: bold;
+        font-size: 6.8vw;
+        // text-transform: uppercase;
+        margin-top: 1.5rem;
+      }
+
+      .banner-text {
+        // font-family: $fontText;
+        // font-weight: 100;
+        // color: #ffffff;
+        font-size: 5.2vw;
+        margin-top: 1.5rem;
+      }
     }
 
-    #main-nav {
-      display: block;
-      clear: none;
-      ul {
-        float: right;
-        li {
-          margin: 1.3rem 1rem 0 1rem;
-          display: inline-block;
+    header {
+      #hamburger-menu {
+        display: none;
+      }
+
+      #main-nav {
+        display: block;
+        clear: none;
+        ul {
+          float: right;
+          li {
+            margin: 1.6rem 1rem 0 1rem;
+            display: inline-block;
+          }
         }
       }
     }
@@ -359,89 +474,289 @@ footer {
   .content-section {
     padding: 0 2rem;
     .section-title {
-      font-size: 2rem;
-      padding: 2rem 0;
+      // font-size: 2rem;
+      padding: 4rem 0 2rem 0;
     }
   }
 
   #work {
     #projects {
       grid-template-columns: 1fr 1fr;
+      margin: 0 -2rem;
       .project-item {
-        img {
-          width: 100%;
-        }
+        margin: 0;
+        // img {
+        //   width: 100%;
+        // }
+
+        // &:nth-of-type(odd) {
+        //   margin-right: 0.5rem;
+        // }
+        // &:nth-of-type(even) {
+        //   margin-left: 0.5rem;
+        // }
       }
     }
   }
 
   #about {
+    overflow: hidden;
     .text-container {
-      // position: relative24
       .about-text {
-        // position: relative;
-        margin-bottom: 1rem;
-        // z-index: 2;
+        margin-right: 0.5rem;
         &:first-of-type::first-letter {
-          float: left;
-          font-weight: normal;
-          font-size: 24rem;
+          font-size: 50vw;
           line-height: 16rem;
+          padding-bottom: 2rem;
         }
       }
 
       #yellow-rect {
-        position: absolute;
-        width: 60vw;
-        height: 30vh;
-        top: 15%;
-        left: 0;
-        background-color: $yellow;
-        z-index: 0;
-        margin-left: -1.1rem;
+        height: 70%;
+        margin-left: 0.5rem;
       }
     }
 
     .line {
-      float: right;
-      width: 25%;
-      max-width: 10rem;
-      border: none;
-      border-top: 4px solid $textColor;
-      margin-top: 1rem;
+      width: 12%;
     }
 
     #resume {
-      clear: right;
-      display: block;
-      float: right;
-      color: $textColor;
-      text-decoration: none;
-      border-bottom: 1px solid $textColor;
-      padding-bottom: 0.2rem;
-      margin-top: 1.5rem;
+      margin-bottom: 2rem;
     }
 
     #about-photo {
-      clear: right;
-      display: block;
-      width: 85%;
-      margin: 0 auto;
-      padding-top: 2.5rem;
+      float: right;
+      width: 45%;
     }
 
     #motto {
-      clear: right;
-      position: relative;
-      left: 10%;
-      font-size: 2rem;
-      font-weight: bold;
-      text-transform: uppercase;
-      margin-top: 2.5rem;
+      clear: none;
+      float: left;
+      margin-left: 2vw;
+      font-size: 6.25vw;
       li {
-        padding-bottom: 1rem;
+        padding-bottom: 1.5rem;
       }
     }
   }
 
+  #contact {
+    clear: both;
+    #form {
+      width: 90%;
+      padding-bottom: 2rem;
+      .form-field {
+
+        .form-label {
+          font-size: 4.5rem;
+        }
+        .form-info {
+          font-size: 1.5rem;
+        }
+      }
+
+      .form-field.message {
+        .form-label {
+
+        }
+        .form-info {
+
+        }
+      }
+
+      #form-submit {
+        font-size: 1.4rem;
+      }
+    }
+  }
+
+  footer {
+    padding: 3rem 0;
+
+    #social {
+      ul {
+        li {
+          margin: 0 1rem;
+          a {
+            i {
+              font-size: 2.2rem;
+            }
+          }
+        }
+      }
+    }
+
+    #copyright {
+      margin-top: 2.5rem;
+      p {
+        font-size: 1rem;
+      }
+    }
+  }
+
+}
+
+// 1024px
+@media screen and (min-width: 64rem) {
+  #main-banner {
+    header {
+      #main-logo {
+        width: 4rem;
+        // float: left;
+        margin: 1rem 0 1rem 1.5rem;
+        // cursor: pointer;
+      }
+
+      // #hamburger-menu {
+      //   display: none;
+      // }
+
+      #main-nav {
+        // display: block;
+        // clear: none;
+        ul {
+          // float: right;
+          margin-right: 0.5rem;
+          li {
+            margin: 1.8rem 1rem 0 1rem;
+            // display: inline-block;
+            a {
+              font-size: 1.7rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .content-section {
+    padding: 0 3rem;
+    .section-title {
+      font-size: 2.5rem;
+      padding: 5rem 0 3rem 0;
+    }
+  }
+
+  #work {
+    #projects {
+      grid-template-columns: 1fr 1fr 1fr;
+      margin: 0 -3rem;
+      .project-item {
+        // margin: 0;
+        // img {
+        //   width: 100%;
+        // }
+
+        // &:nth-of-type(odd) {
+        //   margin-right: 0.5rem;
+        // }
+        // &:nth-of-type(even) {
+        //   margin-left: 0.5rem;
+        // }
+      }
+    }
+  }
+
+  #about {
+    overflow: hidden;
+    .text-container {
+      margin: 0 0.5rem;
+      .about-text {
+        font-size: 1.4rem;
+        margin-right: 1rem;
+        &:first-of-type::first-letter {
+          // font-size: 50vw;
+          // line-height: 16rem;
+          padding-top: 3rem;
+          // padding-bottom: 2rem;
+        }
+      }
+
+      #yellow-rect {
+        height: 65%;
+        // margin-left: 0.5rem;
+      }
+    }
+
+    .line {
+      width: 8%;
+    }
+
+    #resume {
+      // margin-bottom: 2rem;
+      font-size: 1.2rem;
+    }
+
+    #about-photo {
+      // float: right;
+      // width: 45%;
+      margin-right: 1rem;
+    }
+
+    #motto {
+      // clear: none;
+      // float: left;
+      margin-left: 5vw;
+      font-size: 5.5vw;
+      margin-top: 4.5rem;
+      li {
+        padding-bottom: 1.8rem;
+      }
+    }
+  }
+
+  #contact {
+    // clear: both;
+    #form {
+      width: 80%;
+      // padding-bottom: 2rem;
+      .form-field {
+
+        .form-label {
+          // font-size: 5rem;
+        }
+        .form-info {
+          // font-size: 1.5rem;
+        }
+      }
+
+      .form-field.message {
+        .form-label {
+
+        }
+        .form-info {
+
+        }
+      }
+
+      #form-submit {
+        // font-size: 1.5rem;
+      }
+    }
+  }
+
+  footer {
+    // padding: 3rem 0;
+
+    #social {
+      ul {
+        li {
+          margin: 0 1.2rem;
+          a {
+            i {
+              // font-size: 2.2rem;
+            }
+          }
+        }
+      }
+    }
+
+    #copyright {
+      // margin-top: 2.5rem;
+      p {
+        // font-size: 1rem;
+      }
+    }
+  }
 }
