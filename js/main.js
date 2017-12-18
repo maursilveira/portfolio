@@ -1,18 +1,34 @@
 (function() {
   'use strict';
 
+  const MIN = 320;
+  const MEDIUM = 640;
+  const LARGE = 1024;
+  var screensize;
   var banner = document.querySelector('#main-banner');
   var header = banner.querySelector('header');
-  var logos = header.querySelectorAll('img');
+  var logo = header.querySelector('#main-logo');
   var hambmenu = header.querySelector('#hamburger-menu');
   var menu = header.querySelector('#main-nav');
   var menubtns = menu.querySelectorAll('a');
 
   var menuOpen = false;
 
-  var menuTl = new TimelineLite({
-    paused: true
-  });
+  // var menuTl = new TimelineLite({
+  //   paused: true
+  // });
+
+  function checkScreenSize() {
+    if(this < MEDIUM || window.innerWidth < MEDIUM) {
+      screensize = 'small';
+    }
+    else if(this < LARGE || window.innerWidth < LARGE) {
+      screensize = 'medium';
+    }
+    else {
+      screensize = 'large';
+    }
+  }
 
   //make header fixed when reaching top of screen on scroll
   //release it when scrolling up back
@@ -40,7 +56,9 @@
   // function to scroll to selected area when menu clicked
   function scrollSection(evt) {
     evt.preventDefault();
-    menuAnimation();
+    if (menuOpen === true) {
+      menuAnimation();
+    }
     var bodyarea = document.querySelector('body');
     var worksec = bodyarea.querySelector('#work');
     var aboutsec = bodyarea.querySelector('#about');
@@ -48,9 +66,6 @@
 
     switch(this.id) {
       case 'main-logo':
-        bodyarea.scrollIntoView({block: 'start', inline: 'start', behavior: 'smooth'});
-        break;
-      case 'alt-logo':
         bodyarea.scrollIntoView({block: 'start', inline: 'start', behavior: 'smooth'});
         break;
       case 'menu-work':
@@ -69,18 +84,23 @@
 
   function menuAnimation() {
     if (!menuOpen) {
+      var pos = -Math.abs(banner.offsetHeight - header.offsetHeight)/2
+      var offsets = banner.getBoundingClientRect();
       menuOpen = true;
       hambmenu.classList.remove('ion-navicon');
-      hambmenu.classList.add('ion-close');
+      hambmenu.classList.add('ion-android-close');
       header.classList.add('openmenu');
-      // menuTl.play();
+      if (offsets.y <= pos) {
+          menu.classList.add('down');
+      }
     }
     else {
       menuOpen = false;
       // menuTl.reverse();
       header.classList.remove('openmenu');
-      hambmenu.classList.remove('ion-close');
+      hambmenu.classList.remove('ion-android-close');
       hambmenu.classList.add('ion-navicon');
+      menu.classList.remove('down');
     }
   }
 
@@ -107,14 +127,15 @@
   //   bannerimg.src = 'images/statue.jpg';
   // }
 
+  checkScreenSize.call(window.innerWidth);
+
+  window.addEventListener('resize', checkScreenSize, false);
   window.addEventListener('scroll', fixHeaderOnTop, false);
   // window.addEventListener('scroll', changeNavPosition, false);
   menubtns.forEach(function(button) {
     button.addEventListener('click', scrollSection, false);
   });
-  logos.forEach(function(logo) {
-    logo.addEventListener('click', scrollSection, false);
-  });
+  logo.addEventListener('click', scrollSection, false);
   hambmenu.addEventListener('click', menuAnimation, false);
   // for (let i = 0; i < menubtn.length; i++) {
   //   menubtn[i].addEventListener('click', scrollSection, false);
