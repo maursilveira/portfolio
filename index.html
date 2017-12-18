@@ -15,10 +15,7 @@
 </head>
 <body>
   <h1 class="hidden">Mauricio Silveira's Web Portfolio</h1>
-
-
   <div id="container">
-
     <!-- banner begins -->
     <div id="main-banner">
       <img id="banner-image" src="images/monument.jpg" alt="Woman monument">
@@ -32,16 +29,25 @@
       <header>
         <img id="main-logo" src="images/logo_gray.svg" alt="Main Logo">
         <img id="alt-logo" src="images/logo_white.svg" alt="Alternative Logo">
-        <i id="hamburger-menu" class="ion-navicon"></i>
-        <!-- main nav begins -->
         <nav id="main-nav">
           <h2 class="hidden">Main Navigation</h2>
           <ul>
-            <li><a href="#">Work</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a id="menu-work" href="#">Work</a></li>
+            <li><a id="menu-about" href="#">About</a></li>
+            <li><a id="menu-contact" href="#">Contact</a></li>
           </ul>
         </nav>
+
+        <i id="hamburger-menu" class="ion-navicon"></i>
+        <!-- main nav begins -->
+        <!-- <nav id="main-nav">
+          <h2 class="hidden">Main Navigation</h2>
+          <ul>
+            <li><a id="menu-work" href="#">Work</a></li>
+            <li><a id="menu-about" href="#">About</a></li>
+            <li><a id="menu-contact" href="#">Contact</a></li>
+          </ul>
+        </nav> -->
         <!-- main nav ends -->
       </header>
       <!-- header ends -->
@@ -150,6 +156,7 @@
   </div>
   <!-- main content ends -->
 
+  <script src="greensock-js/src/minified/TweenMax.min.js"></script>
   <!-- <script src="js/min/app.min.js"></script> -->
   <script src="js/main.js"></script>
 </body>

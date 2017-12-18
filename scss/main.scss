@@ -40,6 +40,9 @@ body {
   height: 100vh;
   max-height: 1280px;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   #banner-image {
     position: fixed;
@@ -90,21 +93,29 @@ body {
       font-size: 7.2vw;
       margin-top: 1rem;
     }
-
-
   }
 
   header {
-    position: absolute;
-    bottom: 0;
+    // position: absolute;
+    // bottom: 0;
+    display: block;
     width: 100%;
     min-width: inherit;
     max-width: inherit;
     z-index: 30;
     background-color: transparent;
+    // background-color: rgba(255, 255, 255, 0.8);
+    // background: linear-gradient(to right, transparent 50%, rgba(255, 255, 255, 0.8) 50%);
+    // background-size: 200% 100%;
+    // background-repeat: no-repeat;
+    // background-position: left bottom;
+    // background-position: left top;
     overflow: hidden;
+    transition: background-color 0 ease-in-out;
+    // transition: background-position 0.3s ease-in-out;
 
     #main-logo {
+      left: 0;
       width: 3rem;
       float: left;
       margin: 1rem 0 1rem 1rem;
@@ -128,23 +139,30 @@ body {
       font-size: 3rem;
       color: #ffffff;
       float: right;
-      margin: 0.5rem 0.75rem 0 0;
+      margin: 0.5rem 0.75rem 1rem 0;
       cursor: pointer;
       transition: color 0.3s ease-in-out;
     }
 
     #main-nav {
       display: none;
-      clear: both;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      margin: 0 1rem 1.8rem 0;
+      // width: 100%;
+      // height: 100vh;
+      // background-color: $yellow;
+      transition: left 0.5s ease-in-out;
 
       ul {
         text-align: center;
         li {
-          margin: 0.5rem 0;
+          margin: 1.2rem 0;
           a {
             font-family: $fontTitle;
             font-weight: normal;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             color: #ffffff;
             text-decoration: none;
             text-transform: uppercase;
@@ -155,11 +173,47 @@ body {
     }
   }
 
+  // header.openmenu {
+  //   background-position: right top;
+  //   color: $textColor;
+  //   transition: background-position 0.5s ease-in-out;
+  //   // transition-delay: 0;
+  //
+  //   #main-logo {
+  //     opacity: 1;
+  //     transition: color 0.3s ease-in-out;
+  //   }
+  //
+  //   #alt-logo {
+  //     opacity: 0;
+  //     transition: color 0.3s ease-in-out;
+  //   }
+  //
+  //   #hamburger-menu {
+  //     color: $textColor;
+  //     transition: color 0.3s ease-in-out;
+  //   }
+  //
+  //   #main-nav {
+  //     // visibility: visible;
+  //     left: 0;
+  //     transition: left 0.5s 0.3s ease-in-out;
+  //     ul {
+  //       li {
+  //         a {
+  //           color: $textColor;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+
   header.ontop {
     position: fixed;
     top: 0;
     bottom: auto;
     color: $textColor;
+    // background-position: right bottom;
     background-color: rgba(255, 255, 255, 0.8);
 
     #main-logo {
@@ -601,7 +655,8 @@ footer {
 @media screen and (min-width: 64rem) {
   #main-banner {
     header {
-      #main-logo {
+      #main-logo,
+      #alt-logo {
         width: 4rem;
         // float: left;
         margin: 1rem 0 1rem 1.5rem;
