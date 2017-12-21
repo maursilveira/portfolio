@@ -39,7 +39,10 @@ body {
   max-width: inherit;
   height: 100vh;
   max-height: 1280px;
-  position: relative;
+  // position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   #banner-image {
     position: fixed;
@@ -70,7 +73,11 @@ body {
     flex-direction: column;
 
     #banner-logo {
-      width: 58vw;
+      width: 12rem;
+      // height: 12rem;
+      svg {
+        fill: #ffffff;
+      }
     }
 
     .banner-title {
@@ -78,7 +85,7 @@ body {
       color: #ffffff;
       font-weight: normal;
       font-weight: bold;
-      font-size: 9vw;
+      font-size: 2rem;
       text-transform: uppercase;
       margin-top: 1rem;
     }
@@ -87,70 +94,135 @@ body {
       font-family: $fontText;
       font-weight: 100;
       color: #ffffff;
-      font-size: 7.2vw;
+      font-size: 1.5rem;
       margin-top: 1rem;
     }
-
-
   }
 
   header {
-    position: absolute;
-    bottom: 0;
+    position: relative;
+    display: block;
     width: 100%;
     min-width: inherit;
     max-width: inherit;
     z-index: 30;
     background-color: transparent;
     overflow: hidden;
+    transition: background-color 0s ease-in-out;
+
+    // #main-logo {
+    //   left: 0;
+    //   width: 3rem;
+    //   float: left;
+    //   margin: 1rem 0 1rem 1rem;
+    //   cursor: pointer;
+    //   opacity: 0;
+    //   transition: opacity 0.3s ease-in-out;
+    // }
+    //
+    // #alt-logo {
+    //   position: absolute;
+    //   bottom: 0;
+    //   left: 0;
+    //   width: 3rem;
+    //   margin: 1rem 0 1rem 1rem;
+    //   cursor: pointer;
+    //   opacity: 1;
+    //   transition: opacity 0.3s ease-in-out;
+    // }
 
     #main-logo {
       width: 3rem;
+      // height: 3rem;
+      margin: 1rem 0 1rem 1rem;
       float: left;
-      margin: 1rem 0 1rem 1rem;
+      z-index: 30;
       cursor: pointer;
-      opacity: 0;
-      transition: opacity 0.3s ease-in-out;
-    }
-
-    #alt-logo {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 3rem;
-      margin: 1rem 0 1rem 1rem;
-      cursor: pointer;
-      opacity: 1;
-      transition: opacity 0.3s ease-in-out;
+      svg {
+        fill: #ffffff;
+        transition: fill 0.3s ease-in-out;
+      }
     }
 
     #hamburger-menu {
       font-size: 3rem;
       color: #ffffff;
       float: right;
-      margin: 0.5rem 0.75rem 0 0;
+      margin: 0.5rem 0.75rem 1rem 0;
+      z-index: 30;
       cursor: pointer;
       transition: color 0.3s ease-in-out;
     }
 
     #main-nav {
-      display: none;
-      clear: both;
+      position: fixed;
+      top: 0;
+      left: 120rem;
+      width: 100vw;
+      height: 100vh;
+      background-color: $yellow;
+      z-index: -1;
+      transition: left 0.5s ease-in-out;
 
       ul {
-        text-align: center;
+        position: relative;
+        z-index: 5;
+        margin-top: 0;
+        transition: margin-top 0s 0.6s linear;
         li {
-          margin: 0.5rem 0;
+          padding: 1.2rem 0;
           a {
             font-family: $fontTitle;
             font-weight: normal;
-            font-size: 1.2rem;
-            color: #ffffff;
+            font-size: 4rem;
+            color: $textColor;
             text-decoration: none;
             text-transform: uppercase;
-            transition: color 0.3s ease-in-out;
           }
         }
+      }
+
+      #white-rect-1,
+      #white-rect-2 {
+        display: block;
+        position: absolute;
+        background-color: #ffffff;
+        z-index: -1;
+      }
+      #white-rect-1 {
+        top: 55%;
+        left: 0;
+        width: 80%;
+        height: 35%;
+      }
+      #white-rect-2 {
+        top: 0;
+        right: 0;
+        width: 35%;
+        height: 45%;
+      }
+    }
+  }
+
+  header.openmenu {
+    #main-logo {
+      svg {
+        fill: $textColor;
+      }
+    }
+
+    #hamburger-menu {
+      color: $textColor;
+    }
+
+    #main-nav {
+      left: 0;
+    }
+
+    #main-nav.down {
+      ul {
+        margin-top: 100%;
+        transition: margin-top 0s 0s linear;
       }
     }
   }
@@ -160,14 +232,13 @@ body {
     top: 0;
     bottom: auto;
     color: $textColor;
-    background-color: rgba(255, 255, 255, 0.8);
+    // background-color: rgba(255, 255, 255, 0.8);
+    background-color: #ffffff;
 
     #main-logo {
-      opacity: 1;
-    }
-
-    #alt-logo {
-      opacity: 0;
+      svg {
+        fill: $textColor;
+      }
     }
 
     #hamburger-menu {
@@ -354,6 +425,9 @@ body {
         border-left: 2px solid $textColor;
         width: 80%;
         text-align: left;
+        &:active {
+          border-color: $yellow;
+        }
       }
     }
 
@@ -430,7 +504,8 @@ footer {
       // flex-direction: column;
 
       #banner-logo {
-        width: 44vw;
+        width: 16rem;
+        // height: 16rem;
       }
 
       .banner-title {
@@ -438,17 +513,17 @@ footer {
         // color: #ffffff;
         // font-weight: normal;
         // font-weight: bold;
-        font-size: 6.8vw;
+        font-size: 2.6rem;
         // text-transform: uppercase;
-        margin-top: 1.5rem;
+        // margin-top: 1rem;
       }
 
       .banner-text {
         // font-family: $fontText;
         // font-weight: 100;
         // color: #ffffff;
-        font-size: 5.2vw;
-        margin-top: 1.5rem;
+        font-size: 2rem;
+        // margin-top: 1rem;
       }
     }
 
@@ -458,17 +533,60 @@ footer {
       }
 
       #main-nav {
-        display: block;
+        // display: block;
         clear: none;
+        position: relative;
+        left: 0;
+        width: auto;
+        height: auto;
+        background-color: transparent;
+        // z-index: 5;
         ul {
           float: right;
+          text-align: center;
+          z-index: auto;
+          margin-right: 0.5rem;
           li {
-            margin: 1.6rem 1rem 0 1rem;
+            padding: 1.7rem 1rem 1rem 1rem;
             display: inline-block;
+
+            a {
+              font-size: 1.4rem;
+              color: #ffffff;
+              transition: color 0.3s ease-in-out;
+            }
           }
         }
       }
     }
+
+    // header.ontop {
+    //   #main-nav {
+    //     ul {
+    //       li {
+    //         background: linear-gradient(to bottom, $yellow 1%, transparent 99%);
+    //         // background-color: rgba(251, 251, 37, 0);
+    //         // background-color: $yellow;
+    //         // background: transparent;
+    //         background-size: 100% 200%;
+    //         background-repeat: no-repeat;
+    //         background-position: left bottom;
+    //         transition: background 0s, background-position 0.5s;
+    //         // transition: background 0s 0.3s, background-position 0.3s;
+    //       }
+    //       li:hover {
+    //         // background: linear-gradient(to bottom, $yellow 50%, transparent 50%);
+    //         // background-color: linear-gradient(to bottom, $yellow 50%, transparent 50%);
+    //         // background-size: 100% 200%;
+    //         // background-color: rgba(251, 251, 37, 1);
+    //         // background-size: 100% 200%;
+    //         background-position: left top;
+    //         // transition: background 0s, background-position 0.3s;
+    //         // background-color: $yellow;
+    //       }
+    //     }
+    //   }
+    // }
   }
 
   .content-section {
@@ -600,27 +718,35 @@ footer {
 // 1024px
 @media screen and (min-width: 64rem) {
   #main-banner {
-    header {
-      #main-logo {
-        width: 4rem;
-        // float: left;
-        margin: 1rem 0 1rem 1.5rem;
-        // cursor: pointer;
+    #banner-content {
+
+      #banner-logo {
+        width: 18rem;
+        // height: 18rem;
       }
 
-      // #hamburger-menu {
-      //   display: none;
-      // }
+      .banner-title {
+        font-size: 3rem;
+      }
+
+      .banner-text {
+        font-size: 2.2rem;
+      }
+    }
+
+    header {
+
+      #main-logo {
+        width: 4rem;
+        // height: 4rem;
+        margin: 1rem 0 1rem 1.5rem;
+      }
 
       #main-nav {
-        // display: block;
-        // clear: none;
         ul {
-          // float: right;
           margin-right: 0.5rem;
           li {
-            margin: 1.8rem 1rem 0 1rem;
-            // display: inline-block;
+            padding: 1.8rem 1rem 0 1rem;
             a {
               font-size: 1.7rem;
             }
