@@ -16,6 +16,21 @@
 <body>
   <h1 class="hidden">Mauricio Silveira's Web Portfolio</h1>
   <div id="container">
+    <div id="lightbox">
+      <div id="lb-content">
+        <div class="content-wrapper">
+          <div></div>
+          <div><p id="project-name"></p></div>
+          <div><i id="lb-close" class="ion-ios-close-empty"></i></div>
+        </div>
+        <div class="content-wrapper">
+          <div class="content-arrow"><i id="lb-left" class="lb-arrow ion-ios-arrow-left"></i></div>
+          <div><div id="image-container"><div id="image-wrapper"></div></div></div>
+          <div class="content-arrow"><i id="lb-right" class="lb-arrow ion-ios-arrow-right"></i></div>
+        </div>
+        <p id="project-desc"></p>
+      </div>
+    </div>
     <!-- banner begins -->
     <div id="main-banner">
       <img id="banner-image" src="images/monument.jpg" alt="Woman monument">
@@ -66,26 +81,7 @@
       <!-- work section begins -->
       <section id="work" class="content-section">
         <h2 class="section-title">Work</h2>
-        <div id="projects">
-          <div class="project-item">
-            <img src="images/lotr.jpg" alt="Lord of the Rings: The Fellowship of the Ring">
-          </div>
-          <div class="project-item">
-            <img src="images/octopx.jpg" alt="Octopx Digital">
-          </div>
-          <div class="project-item">
-            <img src="images/choose_london.jpg" alt="Choose London">
-          </div>
-          <div class="project-item">
-            <img src="images/odell.jpg" alt="Officialize: Odell Beckham Jr.">
-          </div>
-          <div class="project-item">
-            <img src="images/great_speeches.jpg" alt="Great Speeches">
-          </div>
-          <div class="project-item">
-            <img src="images/southpaw.jpg" alt="The Southpaw Whisky">
-          </div>
-        </div>
+        <ul id="projects"></ul>
       </section>
       <!-- work section ends -->
 
@@ -104,7 +100,7 @@
         <ul id="motto">
           <li>Learn</li>
           <li>Do</li>
-          <li>Launch</li>
+          <li>Release</li>
           <li>Repeat</li>
         </ul>
       </section>
@@ -156,8 +152,8 @@
       <!-- copyright -->
       <section id="copyright">
         <h3 class="hidden">Copyright</h3>
-        <p> 2017 built by maursilveira</p>
-        <p>licensed under <a href="https://github.com/maursilveira/portfolio/blob/master/LICENSE.md">MIT license</a></p>
+        <p> 2018 built by maursilveira</p>
+        <p>licensed under the <a href="https://github.com/maursilveira/portfolio/blob/master/LICENSE.md">MIT license</a></p>
       </section>
 
     </footer>
@@ -165,8 +161,9 @@
   </div>
   <!-- main content ends -->
 
-  <!-- <script src="greensock-js/src/minified/TweenMax.min.js"></script> -->
-  <!-- <script src="js/min/app.min.js"></script> -->
+  <script src="greensock-js/src/minified/TweenMax.min.js"></script>
+  <!-- <script src="js/build/production.min.js"></script> -->
+  <script src="js/modules/request.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
