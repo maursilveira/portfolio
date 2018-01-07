@@ -27,6 +27,7 @@ function createRequest() {
   const MIN = 320;
   const MEDIUM = 640;
   const LARGE = 1024;
+  const XLARGE = 1440;
   var screensize;
   var bodyarea = document.querySelector('body');
   var lightbox = document.querySelector('#lightbox');
@@ -55,8 +56,11 @@ function createRequest() {
     else if(this < LARGE || window.innerWidth < LARGE) {
       screensize = 'medium';
     }
-    else {
+    else if(this < XLARGE || window.innerWidth < XLARGE) {
       screensize = 'large';
+    }
+    else {
+      screensize = 'xlarge';
     }
   }
 
@@ -199,6 +203,9 @@ function createRequest() {
   function openProjectLightbox(evt) {
     evt.preventDefault();
     // console.log(curPhoto);
+    while(wrapper.firstChild) {
+      wrapper.removeChild(wrapper.firstChild);
+    }
     var id = evt.currentTarget.querySelector('img').getAttribute('data-id');
     imageRequest = createRequest();
   	if (!imageRequest) {
@@ -216,7 +223,7 @@ function createRequest() {
   		var result = JSON.parse(imageRequest.responseText);
       var content = lightbox.querySelector('#lb-content');
       var title = content.querySelector('#project-name');
-      var desc = content.querySelector('#project-desc');
+      var desc = content.querySelector('#project-desc > p');
       // var wrapper = content.querySelector('#image-wrapper');
       var close = content.querySelector('#lb-close');
       var left = content.querySelector('#lb-left');
@@ -224,7 +231,8 @@ function createRequest() {
 
       result.forEach(function(file) {
         let image = document.createElement('img');
-        image.src = 'images/'+file.file+'.'+file.extension;
+        // image.src = 'images/'+file.file+'_'+screensize+'.'+file.extension; //uncomment Here
+        image.src = 'images/'+file.file+'_large.'+file.extension;
         wrapper.appendChild(image);
       });
       title.innerHTML = result[0].name;
@@ -232,12 +240,18 @@ function createRequest() {
       curPhoto = 0;
       lightbox.style.display = 'block';
 
+      lightbox.removeEventListener('click', closeLightbox, false);
       close.removeEventListener('click', closeLightbox, false);
       left.removeEventListener('click', previousPhoto, false);
       right.removeEventListener('click', nextPhoto, false);
+      wrapper.removeEventListener('click', nextPhoto, false);
+      lightbox.addEventListener('click', closeLightbox, false);
       close.addEventListener('click', closeLightbox, false);
       left.addEventListener('click', previousPhoto, false);
       right.addEventListener('click', nextPhoto, false);
+      wrapper.addEventListener('click', nextPhoto, false);
+      title.addEventListener('click', function(evt){evt.stopPropagation();});
+      desc.addEventListener('click', function(evt){evt.stopPropagation();});
 
       // document.querySelector('#container').classList.add('noscroll');
       // let offsets = bodyarea.getBoundingClientRect();
@@ -253,7 +267,8 @@ function createRequest() {
     TweenMax.to(wrapper, 0, {left: 0});
   }
 
-  function previousPhoto() {
+  function previousPhoto(evt) {
+    evt.stopPropagation();
     // var wrapper = lightbox.querySelector('#image-wrapper');
     var width = wrapper.offsetWidth;
     var photos = wrapper.querySelectorAll('img');
@@ -273,7 +288,8 @@ function createRequest() {
     }
   }
 
-  function nextPhoto() {
+  function nextPhoto(evt) {
+    evt.stopPropagation();
     // var wrapper = lightbox.querySelector('#image-wrapper');
     var width = wrapper.offsetWidth;
     var photos = wrapper.querySelectorAll('img');
