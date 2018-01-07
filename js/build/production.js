@@ -30,6 +30,7 @@ function createRequest() {
   var screensize;
   var bodyarea = document.querySelector('body');
   var lightbox = document.querySelector('#lightbox');
+  var wrapper = lightbox.querySelector('#image-wrapper');
   var banner = document.querySelector('#main-banner');
   var header = banner.querySelector('header');
   var logo = header.querySelector('#main-logo');
@@ -40,6 +41,7 @@ function createRequest() {
   var detailRequest;
   var imageRequest;
   var curPhoto = 0;
+  var curSize = 'small';
   // var projectcont = document.querySelector('#projects');
 
   var menuOpen = false;
@@ -55,6 +57,26 @@ function createRequest() {
     }
     else {
       screensize = 'large';
+    }
+  }
+
+  //set images size (small, medium or large) on load
+  function setImageSize() {
+    for (let i = 0; i < this.length; i++) {
+      this[i].src = this[i].src.replace('small', screensize);
+    }
+    curSize = screensize;
+  }
+
+  // change images and videos size (small, medium or large) on screen resize
+  function changeImageSize() {
+    if (curSize !== screensize) {
+      var img = document.querySelectorAll('.media-change');
+      for (let i = 0; i < img.length; i++) {
+        img[i].src = img[i].src.replace(curSize, screensize);
+      }
+      curSize = screensize;
+      // console.log(curSize);
     }
   }
 
@@ -176,6 +198,7 @@ function createRequest() {
 
   function openProjectLightbox(evt) {
     evt.preventDefault();
+    // console.log(curPhoto);
     var id = evt.currentTarget.querySelector('img').getAttribute('data-id');
     imageRequest = createRequest();
   	if (!imageRequest) {
@@ -194,14 +217,14 @@ function createRequest() {
       var content = lightbox.querySelector('#lb-content');
       var title = content.querySelector('#project-name');
       var desc = content.querySelector('#project-desc');
-      var wrapper = content.querySelector('#image-wrapper');
+      // var wrapper = content.querySelector('#image-wrapper');
       var close = content.querySelector('#lb-close');
       var left = content.querySelector('#lb-left');
       var right = content.querySelector('#lb-right');
 
       result.forEach(function(file) {
         let image = document.createElement('img');
-        image.src = 'images/'+file.path;
+        image.src = 'images/'+file.file+'.'+file.extension;
         wrapper.appendChild(image);
       });
       title.innerHTML = result[0].name;
@@ -226,22 +249,24 @@ function createRequest() {
   function closeLightbox() {
     lightbox.style.display = 'none';
     bodyarea.classList.remove('noscroll');
+    curPhoto = 0;
+    TweenMax.to(wrapper, 0, {left: 0});
   }
 
   function previousPhoto() {
-    var wrapper = lightbox.querySelector('#image-wrapper');
+    // var wrapper = lightbox.querySelector('#image-wrapper');
     var width = wrapper.offsetWidth;
     var photos = wrapper.querySelectorAll('img');
     // console.log(width);
     // wrapper.style.left = wrapper.style.left + width;
     if (!galleryTl.isActive()) {
       if (curPhoto === 0) {
-        console.log('first photo, go to last one');
+        // console.log('first photo, go to last one');
         galleryTl.to(wrapper, 0.5, {left: '-' + width*(photos.length-1) + 'px'});
         curPhoto = photos.length - 1;
       }
       else {
-        console.log('go to previous one');
+        // console.log('go to previous one');
         galleryTl.to(wrapper, 0.5, {left: '-' + width*(curPhoto-1) + 'px'});
         curPhoto = curPhoto - 1;
       }
@@ -249,21 +274,21 @@ function createRequest() {
   }
 
   function nextPhoto() {
-    var wrapper = lightbox.querySelector('#image-wrapper');
+    // var wrapper = lightbox.querySelector('#image-wrapper');
     var width = wrapper.offsetWidth;
     var photos = wrapper.querySelectorAll('img');
-    console.log(width);
-    console.log(curPhoto);
+    // console.log(width);
+    // console.log(curPhoto);
     // console.log(wrapper.style.left);
     // wrapper.style.left = wrapper.style.left - width;
     if (!galleryTl.isActive()) {
       if (curPhoto === photos.length-1) {
-        console.log('last photo, go to first one');
+        // console.log('last photo, go to first one');
         galleryTl.to(wrapper, 0.5, {left: 0});
         curPhoto = 0;
       }
       else {
-        console.log('go to next one');
+        // console.log('go to next one');
         galleryTl.to(wrapper, 0.5, {left: '-' + width*(curPhoto+1) + 'px'});
         curPhoto = curPhoto + 1;
       }
@@ -272,8 +297,10 @@ function createRequest() {
 
   checkScreenSize.call(window.innerWidth);
   showProjects.call(document.querySelector('#projects'));
+  setImageSize.call(document.querySelectorAll('.media-change'));
 
   window.addEventListener('resize', checkScreenSize, false);
+  window.addEventListener('resize', changeImageSize, false);
   window.addEventListener('scroll', fixHeaderOnTop, false);
   // window.addEventListener('scroll', changeNavPosition, false);
   menubtns.forEach(function(button) {

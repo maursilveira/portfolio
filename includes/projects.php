@@ -4,7 +4,7 @@ include('connect.php');
 
 if (isset($_GET['id'])) {
   $id = $_GET['id'];
-  $imageQuery = "SELECT p.name, p.description, i.path, i.alt, i.position FROM projects p, images i WHERE p.id = '$id' AND p.id = i.project_id ORDER BY i.position";
+  $imageQuery = "SELECT p.name, p.description, i.file, i.extension, i.alt, i.position FROM projects p, images i WHERE p.id = '$id' AND p.id = i.project_id ORDER BY i.position";
   $imageResult = mysqli_query($conn, $imageQuery);
 
   $images = array();
