@@ -1,3 +1,0 @@
-# dummy file #
-This file is here only for adding its parent directory in Bitbucket
-Delete it when it is appropriate
