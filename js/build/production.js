@@ -38,14 +38,14 @@ function createRequest() {
   var hambmenu = header.querySelector('#hamburger-menu');
   var menu = header.querySelector('#main-nav');
   var menubtns = menu.querySelectorAll('a');
+  var motto = document.querySelector('#motto');
   var projectRequest;
   var detailRequest;
   var imageRequest;
   var curPhoto = 0;
   var curSize = 'small';
-  // var projectcont = document.querySelector('#projects');
-
   var menuOpen = false;
+  var mottoAnimated = false;
 
   var galleryTl = new TimelineLite();
 
@@ -62,6 +62,16 @@ function createRequest() {
     else {
       screensize = 'xlarge';
     }
+  }
+
+  function isElementInViewport(el) {
+    let rect = el.getBoundingClientRect();
+    return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <= (window.innerHeight+100 || document.documentElement.clientHeight+100) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
   }
 
   //set images size (small, medium or large) on load
@@ -231,8 +241,9 @@ function createRequest() {
 
       result.forEach(function(file) {
         let image = document.createElement('img');
-        // image.src = 'images/'+file.file+'_'+screensize+'.'+file.extension; //uncomment Here
-        image.src = 'images/'+file.file+'_large.'+file.extension;
+        image.classList.add('media-change');
+        image.src = 'images/'+file.file+'_'+screensize+'.'+file.extension;
+        // image.src = 'images/'+file.file+'_large.'+file.extension;
         wrapper.appendChild(image);
       });
       title.innerHTML = result[0].name;
@@ -311,6 +322,15 @@ function createRequest() {
     }
   }
 
+  function animateMotto() {
+    if(isElementInViewport(motto)) {
+      if (!mottoAnimated) {
+        TweenMax.to(motto, 1, {paddingTop: 0, opacity: 1});
+        mottoAnimated = true;
+      }
+    }
+  }
+
   checkScreenSize.call(window.innerWidth);
   showProjects.call(document.querySelector('#projects'));
   setImageSize.call(document.querySelectorAll('.media-change'));
@@ -318,6 +338,7 @@ function createRequest() {
   window.addEventListener('resize', checkScreenSize, false);
   window.addEventListener('resize', changeImageSize, false);
   window.addEventListener('scroll', fixHeaderOnTop, false);
+  // window.addEventListener('scroll', animateMotto, false);
   // window.addEventListener('scroll', changeNavPosition, false);
   menubtns.forEach(function(button) {
     // button.addEventListener('mouseover', selectMenuOption, false);
