@@ -40,20 +40,14 @@ body.noscroll {
   // overflow-y: auto;
 }
 
-
-
 #lightbox {
   position: fixed;
   top: 0;
   left: 0;
   display: none;
-  // flex-direction: column;
-  // justify-content: center;
-  // align-items: center;
   width: 100%;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.8);
-  // opacity: 0.8;
   z-index: 100;
   overflow: scroll;
 
@@ -63,19 +57,18 @@ body.noscroll {
 
   #lb-content {
     position: absolute;
-    width: 48rem;
+    width: 95%;
+    height: auto;
+    max-width: 48rem;
     top: 5%;
     left: 50%;
     @include translate(-50%, 0);
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: flex-start;
-    // align-items: center;
 
     .content-wrapper {
-      width: 100%;
+      max-width: 100%;
+      height: auto;
       display: grid;
-      grid-template-columns: 5% 90% 5%;
+      grid-template-columns: 7.5% 85% 7.5%;
       text-align: center;
     }
 
@@ -88,33 +81,51 @@ body.noscroll {
 
     #project-name {
       font-family: $fontText;
-      font-size: 2rem;
+      font-size: 1.6rem;
+      line-height: 1.8rem;
       color: #ffffff;
     }
 
     #image-container {
       width: 100%;
-      // left: -640px;
       position: relative;
-      max-width: 40rem;
+      max-width: 30rem;
       margin: 0 auto;
       overflow: hidden;
+      outline: 0;
+      background-color: #ffffff;
 
       #image-wrapper {
         position: relative;
         width: 100%;
         left: 0;
         display: flex;
+
+        img {
+          outline: 0;
+          max-width: 480px;
+          max-height: 384px;
+          width: 100%;
+          height: 100%;
+        }
       }
     }
 
     #project-desc {
       display: block;
-      width: 80%;
+      width: 85%;
+      max-width: 30rem;
       margin: 0 auto;
-      font-family: $fontText;
-      font-size: 1rem;
-      color: #ffffff;
+      background-color: #ffffff;
+
+      p {
+        font-family: $fontText;
+        font-size: 1rem;
+        line-height: 1.2rem;
+        color: $textColor;
+        padding: 0.8rem;
+        margin-bottom: 2rem;
+      }
     }
 
     .content-arrow {
@@ -363,6 +374,7 @@ body.noscroll {
 
     .about-text {
       position: relative;
+      line-height: 105%;
       margin-bottom: 1rem;
       z-index: 2;
       &:first-of-type::first-letter {
@@ -422,6 +434,8 @@ body.noscroll {
     font-weight: bold;
     text-transform: uppercase;
     margin-top: 2.5rem;
+    // padding-top: 3rem;
+    // opacity: 0;
     li {
       padding-bottom: 1rem;
     }
@@ -623,35 +637,39 @@ footer {
 
 // 640px
 @media screen and (min-width: 40rem) {
+  #lightbox {
+    #lb-content {
+      max-width: 48rem;
+
+      #image-container {
+        max-width: 40rem;
+
+        #image-wrapper {
+          img {
+            max-width: 640px;
+            max-height: 512px;
+          }
+        }
+      }
+
+      #project-desc {
+        max-width: 40rem;
+      }
+    }
+  }
+
   #main-banner {
     #banner-content {
-      // height: 80vh;
-      // display: flex;
-      // justify-content: center;
-      // align-items: center;
-      // flex-direction: column;
-
       #banner-logo {
         width: 16rem;
-        // height: 16rem;
       }
 
       .banner-title {
-        // font-family: $fontTitle;
-        // color: #ffffff;
-        // font-weight: normal;
-        // font-weight: bold;
         font-size: 2.6rem;
-        // text-transform: uppercase;
-        // margin-top: 1rem;
       }
 
       .banner-text {
-        // font-family: $fontText;
-        // font-weight: 100;
-        // color: #ffffff;
         font-size: 2rem;
-        // margin-top: 1rem;
       }
     }
 
@@ -661,14 +679,12 @@ footer {
       }
 
       #main-nav {
-        // display: block;
         clear: none;
         position: relative;
         left: 0;
         width: auto;
         height: auto;
         background-color: transparent;
-        // z-index: 5;
         ul {
           float: right;
           text-align: center;
@@ -692,7 +708,6 @@ footer {
   .content-section {
     padding: 0 2rem;
     .section-title {
-      // font-size: 2rem;
       padding: 4rem 0 2rem 0;
     }
   }
@@ -728,6 +743,7 @@ footer {
     #about-photo {
       float: right;
       width: 45%;
+      margin-right: 0.5rem;
     }
 
     #motto {
@@ -819,12 +835,46 @@ footer {
 
 // 1024px
 @media screen and (min-width: 64rem) {
+  #lightbox {
+    #lb-content {
+      max-width: 48rem;
+      top: 2%;
+
+      #lb-close {
+        font-size: 4rem;
+      }
+
+      #project-name {
+        font-size: 1.8rem;
+        line-height: 2rem;
+      }
+
+      #image-container {
+        max-width: 40rem;
+      }
+
+      #project-desc {
+        max-width: 40rem;
+
+        p {
+          font-size: 1.1rem;
+          padding: 1rem;
+        }
+      }
+
+      .content-arrow {
+        .lb-arrow {
+          font-size: 4rem;
+        }
+      }
+    }
+  }
+
   #main-banner {
     #banner-content {
 
       #banner-logo {
         width: 18rem;
-        // height: 18rem;
       }
 
       .banner-title {
@@ -1050,7 +1100,8 @@ footer {
     .text-container {
       // margin: 0 0.5rem;
       .about-text {
-        // font-size: 1.6rem;
+        font-size: 1.8rem;
+
         margin-left: 1rem;
         margin-right: 2rem;
         &:first-of-type::first-letter {
@@ -1083,6 +1134,7 @@ footer {
       // width: 45%;
       // margin-right: 1rem;
       padding-top: 7.5rem;
+      margin-right: 2rem;
     }
 
     #motto {
@@ -1100,6 +1152,47 @@ footer {
 
 // 1440px
 @media screen and (min-width: 90rem) {
+  #lightbox {
+    #lb-content {
+      max-width: 68rem;
+
+      #lb-close {
+        font-size: 5rem;
+      }
+
+      #project-name {
+        font-size: 2rem;
+        line-height: 2.2rem;
+      }
+
+      #image-container {
+        max-width: 60rem;
+
+        #image-wrapper {
+          img {
+            max-width: 960px;
+            max-height: 768px;
+          }
+        }
+      }
+
+      #project-desc {
+        max-width: 60rem;
+
+        p {
+          font-size: 1.2rem;
+          padding: 1rem;
+        }
+      }
+
+      .content-arrow {
+        .lb-arrow {
+          font-size: 5rem;
+        }
+      }
+    }
+  }
+
   #about {
     // overflow: hidden;
     .text-container {
@@ -1138,7 +1231,8 @@ footer {
       // float: right;
       // width: 45%;
       // margin-right: 1rem;
-      padding-top: 7.5rem;
+      // padding-top: 7.5rem;
+      margin-right: 3rem;
     }
 
     #motto {
@@ -1146,7 +1240,121 @@ footer {
       // float: left;
       // margin-left: 5vw;
       // font-size: 5.5vw;
-      margin-top: 9.5rem;
+      // margin-top: 9.5rem;
+      li {
+        // padding-bottom: 1.8rem;
+      }
+    }
+  }
+}
+
+// 1600px
+@media screen and (min-width: 100rem) {
+  #about {
+    // overflow: hidden;
+    .text-container {
+      // margin: 0 0.5rem;
+      .about-text {
+        font-size: 2rem;
+        margin-left: 3rem;
+        margin-right: 4rem;
+        &:first-of-type::first-letter {
+          // font-size: 50vw;
+          line-height: 26rem;
+          // padding-top: 3rem;
+          // padding-bottom: 2rem;
+        }
+      }
+
+      #yellow-rect {
+        // height: 70%;
+        // margin-left: 0.5rem;
+      }
+    }
+
+    .line {
+      // width: 8%;
+      margin-top: 2rem;
+      margin-right: 4rem;
+    }
+
+    #resume {
+      // margin-bottom: 2rem;
+      font-size: 1.6rem;
+      margin-right: 4rem;
+    }
+
+    #about-photo {
+      // float: right;
+      // width: 45%;
+      // margin-right: 1rem;
+      // padding-top: 7.5rem;
+      margin-right: 4rem;
+    }
+
+    #motto {
+      // clear: none;
+      // float: left;
+      // margin-left: 5vw;
+      // font-size: 5.5vw;
+      // margin-top: 9.5rem;
+      li {
+        // padding-bottom: 1.8rem;
+      }
+    }
+  }
+}
+
+// 1920px
+@media screen and (min-width: 120rem) {
+  #about {
+    // overflow: hidden;
+    .text-container {
+      // margin: 0 0.5rem;
+      .about-text {
+        font-size: 2.5rem;
+        margin-left: 4rem;
+        margin-right: 5.5rem;
+        &:first-of-type::first-letter {
+          // font-size: 50vw;
+          line-height: 34rem;
+          // padding-top: 3rem;
+          // padding-bottom: 2rem;
+        }
+      }
+
+      #yellow-rect {
+        // height: 70%;
+        // margin-left: 0.5rem;
+      }
+    }
+
+    .line {
+      // width: 8%;
+      // margin-top: 2rem;
+      margin-right: 5.5rem;
+    }
+
+    #resume {
+      // margin-bottom: 2rem;
+      font-size: 1.8rem;
+      margin-right: 5.5rem;
+    }
+
+    #about-photo {
+      margin-right: 5.5rem;
+      // float: right;
+      // width: 45%;
+      // margin-right: 1rem;
+      // padding-top: 7.5rem;
+    }
+
+    #motto {
+      // clear: none;
+      // float: left;
+      margin-left: 6rem;
+      font-size: 7rem;
+      // margin-top: 9.5rem;
       li {
         // padding-bottom: 1.8rem;
       }
