@@ -86,7 +86,7 @@
     //check if position y of banner is smaller or equal to position of header on screen
     //if true, add class 'ontop' to header
     //if false, remove class 'ontop' from header
-    if (offsets.y <= pos) {
+    if (offsets.top <= pos) {
       header.classList.add('ontop');
     }
     else {
@@ -130,7 +130,7 @@
       hambmenu.classList.remove('ion-navicon');
       hambmenu.classList.add('ion-android-close');
       header.classList.add('openmenu');
-      if (offsets.y <= pos) {
+      if (offsets.top <= pos) {
           menu.classList.add('down');
       }
     }
@@ -182,6 +182,9 @@
         link.appendChild(name);
         item.appendChild(link);
         projectcont.appendChild(item);
+        if (!("ontouchstart" in document.documentElement)) {
+          item.classList.add('no-touch');
+        }
         item.addEventListener('click', openProjectLightbox, false);
       });
   	}
@@ -244,7 +247,6 @@
       // document.querySelector('#container').classList.add('noscroll');
       // let offsets = bodyarea.getBoundingClientRect();
       bodyarea.classList.add('noscroll');
-      // bodyarea.style.top = offsets.y + 'px';
   	}
   }
 
