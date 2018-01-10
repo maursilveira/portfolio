@@ -97,8 +97,13 @@ body.noscroll {
 
       #image-wrapper {
         position: relative;
+        min-width: 0;
+        min-height: 0;
         width: 100%;
         left: 0;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
         display: flex;
 
         img {
@@ -107,6 +112,12 @@ body.noscroll {
           max-height: 384px;
           width: 100%;
           height: 100%;
+          -webkit-flex-grow: 0;
+          -webkit-flex-shrink: 0;
+          -webkit-flex-basis: 100%;
+          flex-grow: 0;
+          flex-shrink: 0;
+          flex-basis: 100%;
         }
       }
     }
@@ -129,6 +140,10 @@ body.noscroll {
     }
 
     .content-arrow {
+      display: -webkit-box;
+      // display: -ms-flexbox;
+      display: -webkit-flex;
+      display: -moz-box;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -147,6 +162,10 @@ body.noscroll {
   height: 100vh;
   max-height: 1280px;
   // position: relative;
+  display: -webkit-box;
+  // display: -ms-flexbox;
+  display: -webkit-flex;
+  display: -moz-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -174,6 +193,10 @@ body.noscroll {
 
   #banner-content {
     height: 80vh;
+    display: -webkit-box;
+    // display: -ms-flexbox;
+    display: -webkit-flex;
+    display: -moz-box;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -214,7 +237,7 @@ body.noscroll {
     max-width: inherit;
     z-index: 30;
     background-color: transparent;
-    overflow: hidden;
+    // overflow: hidden;
     transition: background-color 0s ease-in-out;
 
     #main-logo {
@@ -306,7 +329,7 @@ body.noscroll {
 
     #main-nav.down {
       ul {
-        margin-top: 100%;
+        margin-top: 80%;
         transition: margin-top 0s 0s linear;
       }
     }
@@ -345,6 +368,7 @@ body.noscroll {
 #top-triangle {
   width: 0;
   margin: 0 auto;
+  line-height: 0;
   border-left: 50vw solid transparent;
   border-right: 50vw solid transparent;
   border-bottom: 20vh solid #ffffff;
@@ -359,7 +383,7 @@ body.noscroll {
     font-size: 2rem;
     text-transform: uppercase;
     text-align: right;
-    padding: 3rem 0 2rem 0;
+    padding: 4.5rem 0 2rem 0;
     &::before,
     &::after {
       content: "-";
@@ -493,17 +517,17 @@ body.noscroll {
           top: 100%;
         }
       }
-      &:hover {
-        img {
-          opacity: 0.05;
-          transform: scale(1.2);
-        }
-        h3 {
-          opacity: 1;
-          &::before,
-          &::after {
-            width: 100%;
-          }
+    }
+    .project-item.no-touch:hover {
+      img {
+        opacity: 0.05;
+        transform: scale(1.2);
+      }
+      h3 {
+        opacity: 1;
+        &::before,
+        &::after {
+          width: 100%;
         }
       }
     }
@@ -518,6 +542,10 @@ body.noscroll {
     .form-field {
       width: 100%;
       position: relative;
+      display: -webkit-box;
+      // display: -ms-flexbox;
+      display: -webkit-flex;
+      display: -moz-box;
       display: flex;
       border: none;
       align-items: center;
@@ -536,6 +564,9 @@ body.noscroll {
       }
       .form-info {
         position: absolute;
+        top: 50%;
+        left: 50%;
+        @include translate(-50%, -100%);
         border: none;
         border-bottom: 2px solid $textColor;
         font-family: $fontTitle;
@@ -559,11 +590,16 @@ body.noscroll {
       padding-top: 1rem;
       .form-label {
         position: absolute;
+        top: 50%;
         left: 0;
+        @include translate(0, -50%);
         padding-top: 3rem;
       }
       .form-info {
         position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
         border-left: 2px solid $textColor;
         width: 80%;
         text-align: left;
@@ -898,7 +934,7 @@ footer {
         ul {
           margin-right: 0.5rem;
           li {
-            padding: 1.8rem 1rem 0 1rem;
+            padding: 1.8rem 1.5rem 0 1.5rem;
             a {
               font-size: 1.7rem;
             }
@@ -913,6 +949,7 @@ footer {
     .section-title {
       font-size: 2.5rem;
       padding: 5rem 0 3rem 0;
+      margin-right: 2rem;
     }
   }
 
@@ -1095,6 +1132,30 @@ footer {
 
 // 1344px
 @media screen and (min-width: 84rem) {
+  #main-banner {
+    header {
+      #main-nav {
+        ul {
+          //margin-right: 0.5rem;
+          li {
+            padding: 1.8rem 2rem 0 2rem;
+            a {
+              //font-size: 1.7rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .content-section {
+    .section-title {
+      font-size: 3rem;
+      padding: 6rem 0 3rem 0;
+      margin-right: 3.5rem;
+    }
+  }
+
   #about {
     // overflow: hidden;
     .text-container {
@@ -1152,6 +1213,37 @@ footer {
 
 // 1440px
 @media screen and (min-width: 90rem) {
+  #main-banner {
+    header {
+      #main-logo {
+        width: 5rem;
+        // height: 4rem;
+        // margin: 1rem 0 1rem 1.5rem;
+      }
+
+      #main-nav {
+        ul {
+          //margin-right: 0.5rem;
+          li {
+            padding: 2rem 2.5rem 0 2.5rem;
+            a {
+              font-size: 2rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .content-section {
+    // padding: 0 3rem;
+    .section-title {
+      font-size: 3.5rem;
+      padding: 7rem 0 3.5rem 0;
+      margin-right: 5rem;
+    }
+  }
+
   #lightbox {
     #lb-content {
       max-width: 68rem;
@@ -1246,6 +1338,36 @@ footer {
       }
     }
   }
+
+  #contact {
+    // clear: both;
+    #form {
+      // width: 80%;
+      // padding-bottom: 2rem;
+      .form-field {
+
+        .form-label {
+          font-size: 6.5rem;
+        }
+        .form-info {
+          // font-size: 1.5rem;
+        }
+      }
+
+      .form-field.message {
+        .form-label {
+
+        }
+        .form-info {
+
+        }
+      }
+
+      #form-submit {
+        // font-size: 1.5rem;
+      }
+    }
+  }
 }
 
 // 1600px
@@ -1307,6 +1429,37 @@ footer {
 
 // 1920px
 @media screen and (min-width: 120rem) {
+  #main-banner {
+    header {
+      #main-logo {
+        width: 5.5rem;
+        // height: 4rem;
+        // margin: 1rem 0 1rem 1.5rem;
+      }
+
+      #main-nav {
+        ul {
+          //margin-right: 0.5rem;
+          li {
+            padding: 2rem 3rem 0 3rem;
+            a {
+              font-size: 2.4rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .content-section {
+    // padding: 0 3rem;
+    .section-title {
+      font-size: 4.5rem;
+      padding: 8rem 0 5rem 0;
+      margin-right: 7rem;
+    }
+  }
+
   #about {
     // overflow: hidden;
     .text-container {
@@ -1357,6 +1510,36 @@ footer {
       // margin-top: 9.5rem;
       li {
         // padding-bottom: 1.8rem;
+      }
+    }
+  }
+
+  #contact {
+    // clear: both;
+    #form {
+      // width: 80%;
+      // padding-bottom: 2rem;
+      .form-field {
+
+        .form-label {
+          font-size: 8rem;
+        }
+        .form-info {
+          // font-size: 1.5rem;
+        }
+      }
+
+      .form-field.message {
+        .form-label {
+          padding-top: 0;
+        }
+        .form-info {
+
+        }
+      }
+
+      #form-submit {
+        // font-size: 1.5rem;
       }
     }
   }

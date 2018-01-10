@@ -1,6 +1,6 @@
 <?php
 
-  require_once("admin/scripts/config.php");
+  require_once("config.php");
 
   if(isset($_POST['name'])) {
     $name = $_POST['name'];
@@ -8,9 +8,9 @@
     $message = $_POST['message'];
     $subject = $_POST['subject'];
 
-    $direct = "thankyou.php";
+    $direct = "../index.html#contact";
 
-    if(empty($subject)) {
+    if($subject === "") {
       $sendMail = submitMessage($name, $email, $message, $direct);
     }
   }

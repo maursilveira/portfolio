@@ -35,7 +35,7 @@
     </div>
     <!-- banner begins -->
     <div id="main-banner">
-      <img id="banner-image" src="images/monument.jpg" alt="Woman monument">
+      <img id="banner-image" class="media-change" src="images/monument_small.jpg" alt="Woman monument">
       <div id="banner-over"></div>
       <div id="banner-content">
         <div id="banner-logo">
@@ -52,9 +52,9 @@
         <nav id="main-nav">
           <h2 class="hidden">Main Navigation</h2>
           <ul>
-            <li><a id="menu-about" href="#">About</a></li>
-            <li><a id="menu-work" href="#">Work</a></li>
-            <li><a id="menu-contact" href="#">Contact</a></li>
+            <li><a id="menu-about" href="#about">About</a></li>
+            <li><a id="menu-work" href="#work">Work</a></li>
+            <li><a id="menu-contact" href="#contact">Contact</a></li>
           </ul>
           <div id="white-rect-1"></div>
           <div id="white-rect-2"></div>
@@ -102,7 +102,7 @@
       <!-- contact section begins -->
       <section id="contact" class="content-section">
         <h2 class="section-title">Contact</h2>
-        <form id="form" class="clearfix" action="#" method="post" autocomplete="off">
+        <form id="form" class="clearfix" action="includes/contact.php" method="post" autocomplete="off">
           <div class="form-field">
             <label class="form-label" for="name">Name</label>
             <input class="form-info" type="text" name="name" required>
@@ -119,7 +119,7 @@
             <label class="form-label" for="message">Message</label>
             <textarea class="form-info" name="message" rows="8" cols="30" required></textarea>
           </div>
-          <button id="form-submit" type="submit" formaction="#" >Submit</button>
+          <input id="form-submit" name="submit" type="submit" value="Submit" />
         </form>
       </section>
       <!-- contact section ends -->
@@ -155,8 +155,6 @@
   <!-- main content ends -->
 
   <script src="greensock-js/src/minified/TweenMax.min.js"></script>
-  <!-- <script src="js/build/production.min.js"></script> -->
-  <script src="js/modules/request.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/build/production.min.js"></script>
 </body>
 </html>
