@@ -160,10 +160,7 @@ body.noscroll {
   width: 100%;
   max-width: inherit;
   height: 100vh;
-  max-height: 1280px;
-  // position: relative;
   display: -webkit-box;
-  // display: -ms-flexbox;
   display: -webkit-flex;
   display: -moz-box;
   display: flex;
@@ -179,13 +176,13 @@ body.noscroll {
     -o-object-fit: cover;
 		object-fit: cover;
     @include grayscale(30%);
-    // opacity: 0.7;
     z-index: -2;
   }
 
   #banner-over {
     position: fixed;
     width: 100%;
+    max-width: 120rem;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.3);
     z-index: -1;
@@ -194,7 +191,6 @@ body.noscroll {
   #banner-content {
     height: 80vh;
     display: -webkit-box;
-    // display: -ms-flexbox;
     display: -webkit-flex;
     display: -moz-box;
     display: flex;
@@ -204,7 +200,6 @@ body.noscroll {
 
     #banner-logo {
       width: 12rem;
-      // height: 12rem;
       svg {
         fill: #ffffff;
       }
@@ -237,7 +232,6 @@ body.noscroll {
     max-width: inherit;
     z-index: 30;
     background-color: transparent;
-    // overflow: hidden;
     transition: background-color 0s ease-in-out;
 
     #main-logo {
@@ -340,7 +334,6 @@ body.noscroll {
     top: 0;
     bottom: auto;
     color: $textColor;
-    // background-color: rgba(255, 255, 255, 0.8);
     background-color: #ffffff;
 
     #main-logo {
@@ -1451,6 +1444,15 @@ footer {
     }
   }
 
+  #top-triangle {
+    // width: 0;
+    // margin: 0 auto;
+    // line-height: 0;
+    border-left: 60rem solid transparent;
+    border-right: 60rem solid transparent;
+    // border-bottom: 20vh solid #ffffff;
+  }
+
   .content-section {
     // padding: 0 3rem;
     .section-title {
@@ -1468,12 +1470,18 @@ footer {
         font-size: 2.5rem;
         margin-left: 4rem;
         margin-right: 5.5rem;
-        &:first-of-type::first-letter {
-          // font-size: 50vw;
-          line-height: 34rem;
-          // padding-top: 3rem;
-          // padding-bottom: 2rem;
-        }
+        // &:first-of-type::first-letter {
+        //   font-size: 60rem;
+        //   line-height: 34rem;
+        //   // padding-top: 3rem;
+        //   // padding-bottom: 2rem;
+        // }
+      }
+      .about-text:first-of-type::first-letter {
+        font-size: 60rem;
+        line-height: 34rem;
+        // padding-top: 3rem;
+        // padding-bottom: 2rem;
       }
 
       #yellow-rect {
