@@ -12,19 +12,32 @@ module.exports = function(grunt) {
       }
     },
 
+    // covert ES6 to ES5
+    babel : {
+      options: {
+        sourceMap: true,
+        presets: ['env']
+      },
+      dist: {
+        files: {
+          'js/build/production.es5.js': 'js/build/production.js'
+        }
+      }
+    },
+
     uglify : {
       build: {
-        src: 'js/build/production.js',
-        dest: 'js/build/production.min.js'
+        src: 'js/build/production.es5.js',
+        dest: 'js/min/production.min.js'
       }
     },
 
     sass: {
       dist: {
         options: {
-          style: 'compressed',
+          style: 'nested',
           sourcemap: 'none',
-          debugInfo : true,
+          debugInfo : false,
           noCache: true
         },
         files : {
@@ -43,14 +56,17 @@ module.exports = function(grunt) {
         ]
       },
       dist: {
-        src: 'css/main.css'
+        files: {
+          'css/main.min.css': 'css/main.css'
+        }
+        // src: 'public/css/main.css'
       }
     },
 
     watch : {
       scripts : {
         files : ['js/main.js', 'js/modules/*.js'],
-        tasks : ['concat', 'uglify'],
+        tasks : ['concat', 'babel', 'uglify'],
         options : {
           spawn : false
         }
@@ -71,8 +87,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-postcss');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-babel');
 
   //when loaded, run
-  grunt.registerTask('default', ['concat', 'uglify', 'sass', 'watch']);
+  grunt.registerTask('default', ['concat', 'babel', 'uglify', 'sass', 'watch']);
 
 };
