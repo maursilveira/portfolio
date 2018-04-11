@@ -189,6 +189,10 @@ body.noscroll {
         color: #4d4d4d;
         padding: 0.8rem;
         margin-bottom: 2rem; }
+        #lightbox #lb-content #project-desc p a {
+          text-decoration: none;
+          font-weight: bold;
+          color: #4d4d4d; }
     #lightbox #lb-content .content-arrow {
       display: -webkit-box;
       display: -webkit-flex;
@@ -696,7 +700,8 @@ footer {
       max-width: 40rem; }
       #lightbox #lb-content #project-desc p {
         font-size: 1.1rem;
-        padding: 1rem; }
+        padding: 1rem;
+        line-height: 1.5rem; }
     #lightbox #lb-content .content-arrow .lb-arrow {
       font-size: 4rem; }
 
