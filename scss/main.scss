@@ -136,6 +136,12 @@ body.noscroll {
         color: $textColor;
         padding: 0.8rem;
         margin-bottom: 2rem;
+
+        a {
+          text-decoration: none;
+          font-weight: bold;
+          color: $textColor;
+        }
       }
     }
 
@@ -888,6 +894,7 @@ footer {
         p {
           font-size: 1.1rem;
           padding: 1rem;
+          line-height: 1.5rem;
         }
       }
 

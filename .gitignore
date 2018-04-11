@@ -1,6 +1,6 @@
 .sass-cache
 .DS_Store
 env.php
-main.css.map
+*.map
 node_modules
 npm-debug.log
